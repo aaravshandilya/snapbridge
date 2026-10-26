@@ -44,7 +44,6 @@ DEFAULTS = {
     "screening_complete": False,
     "review_complete": False,
     "documents_data": [],
-    "demo": False,
 }
 
 
@@ -56,20 +55,6 @@ def init_state() -> None:
 def go(page: str) -> None:
     st.session_state.pending_page = page
     st.rerun()
-
-
-def load_demo() -> None:
-    st.session_state.update({
-        "demo": True, "state": "AZ", "household_size": 3, "children": 1,
-        "elderly_disabled": True, "employment": "One or more people work",
-        "has_income": True, "income_amount": 560.0, "income_frequency": "weekly",
-        "monthly_income": monthly_income(560, "weekly"), "rent": 1250.0,
-        "utilities": 210.0, "childcare": 325.0, "medical": 85.0,
-        "child_support": 0.0, "household_complete": True, "income_complete": True,
-        "screening_complete": True, "review_complete": True, "screen_step": 3,
-        "assistant_step": 2,
-    })
-    st.session_state.documents_data = recommend_documents(dict(st.session_state))
 
 
 def clear_data() -> None:
@@ -97,12 +82,9 @@ def render_home(t) -> None:
         f'<h1>{t("hero_title")}</h1><p>{t("hero_body")}</p></section>',
         unsafe_allow_html=True,
     )
-    c1, c2 = st.columns([1, 1])
-    if c1.button(t("get_started"), type="primary", use_container_width=True):
+    cta, _ = st.columns([1, 1])
+    if cta.button(t("get_started"), type="primary", use_container_width=True):
         go("screener")
-    if c2.button(t("explore_demo"), use_container_width=True):
-        load_demo()
-        go("dashboard")
 
     st.write("")
     cols = st.columns(3)

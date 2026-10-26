@@ -15,7 +15,6 @@ SNAPBridge is a privacy-first Streamlit application that helps Arizona household
 - Conditional document recommendations and collection progress
 - Readiness score based on completed preparation milestones—not approval probability
 - English and Spanish navigation, questions, explanations, checklist guidance, and FAQ
-- Synthetic Demo Mode for a complete judge walkthrough
 - PDF preparation worksheet and CSV checklist downloads
 - Clear-session control and no server-side applicant storage
 - Automated tests for rules, branching, recommendations, validation, readiness, and PDF output
@@ -84,14 +83,14 @@ The tests use fictional values and never contain applicant information.
 
 ## Judge demo
 
-1. Open the landing page and select **Explore with fictional data**.
-2. Review the readiness dashboard.
-3. Open **Eligibility Screener** to see the fictional Arizona household and explainable result.
-4. Open **My Documents**, mark items ready, and download the checklist.
-5. Open **Application Assistant** and review reused answers.
+1. Open the landing page and select **Get started**.
+2. Enter a clearly identified fictional Arizona household in the screener.
+3. Review the explainable result and its official sources.
+4. Open **Documents**, mark items ready, and download the checklist.
+5. Open **Prepare** and review the reused fictional answers.
 6. Return to **Dashboard** and download the labeled PDF preparation worksheet.
 7. Use the official portal link to demonstrate the handoff to Health-e-Arizona Plus.
-8. Open **Privacy and session controls**, then clear the session information.
+8. Open **Privacy and session controls**, then clear the fictional information.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -100,7 +99,7 @@ The tests use fictional values and never contain applicant information.
 3. Sign in to [Streamlit Community Cloud](https://share.streamlit.io/), select **Create app**, and choose the repository and branch.
 4. Set the main file path to `app.py` (or `SNAPBridge/app.py` if this remains a subdirectory).
 5. Deploy. No secrets, API keys, database, or paid service is required.
-6. Test the English and Spanish paths, mobile layout, Demo Mode, PDF download, checklist download, clear-session action, and every official link on the deployed URL.
+6. Test the English and Spanish paths, mobile layout, PDF download, checklist download, clear-session action, and every official link on the deployed URL.
 
 Community Cloud creates isolated user sessions, but it is still a public service. The MVP therefore avoids accounts, uploads, permanent storage, and highly sensitive identifiers.
 
@@ -115,7 +114,7 @@ For a competition submission, capture at least these screens at a desktop width 
 5. Readiness dashboard
 6. Spanish FAQ or screener view
 
-Use only Demo Mode. Crop out browser account details and save meaningful alt-text with each image.
+Use only clearly identified fictional test information. Crop out browser account details and save meaningful alt-text with each image.
 
 ## Privacy statement
 

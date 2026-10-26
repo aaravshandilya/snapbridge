@@ -88,8 +88,8 @@ def screen_arizona(
     if has_elderly_or_disabled_member:
         return ScreeningResult(
             status="needs_net_test",
-            title_key="result_needs_review",
-            explanation_keys=("explain_net_only", "explain_official_decision"),
+            title_key="result_des_confirm",
+            explanation_keys=("explain_net_only_plain", "explain_apply_unsure", "explain_official_decision_plain"),
             **common,
         )
     if gross_monthly_income <= standard:

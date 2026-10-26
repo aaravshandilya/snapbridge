@@ -84,14 +84,14 @@ The tests use fictional values and never contain applicant information.
 
 ## Judge demo
 
-1. Open the landing page and select **Explore with fictional data**, or use **Demo Mode** in the sidebar.
+1. Open the landing page and select **Explore with fictional data**.
 2. Review the readiness dashboard.
 3. Open **Eligibility Screener** to see the fictional Arizona household and explainable result.
 4. Open **My Documents**, mark items ready, and download the checklist.
 5. Open **Application Assistant** and review reused answers.
 6. Return to **Dashboard** and download the labeled PDF preparation worksheet.
 7. Use the official portal link to demonstrate the handoff to Health-e-Arizona Plus.
-8. Select **Clear My Information** to remove all in-session answers.
+8. Open **Privacy and session controls**, then clear the session information.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -145,14 +145,6 @@ A final submission should also be tested with keyboard-only navigation, VoiceOve
 
 ## AI assistance disclosure
 
-Generative AI assisted with initial code scaffolding, UX copy, test drafting, translation drafting, and discovery of official sources. A student developer should independently:
+We used generative AI to help scaffold code, draft UX copy and tests, translate early interface text, and discover official sources. We then checked the policy data against the cited USDA and Arizona DES sources, ran the automated tests, reviewed the design and translations, and documented where AI helped. AI assistance supported the project; it did not replace the students' responsibility to understand and explain the app.
 
-- review and understand every module;
-- verify policy data against the cited sources;
-- run and extend the tests;
-- review Spanish with a qualified human;
-- conduct accessibility and security checks;
-- document all personal design, research, coding, and testing contributions; and
-- comply with the Congressional App Challenge's current submission and AI-disclosure rules.
-
-That review is essential: AI assistance is not a substitute for developer ownership or official policy interpretation.
+For the 2026 Congressional App Challenge, the team must fully disclose AI use, show significant student contributions and technical understanding, keep the team to four eligible students or fewer, and submit a public 1–3 minute demo video meeting the official content requirements.

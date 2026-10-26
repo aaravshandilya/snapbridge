@@ -43,6 +43,5 @@ def readiness_score(data: dict[str, Any], document_items: list[dict[str, Any]]) 
         bool(data.get("screening_complete")),
         bool(document_items) and all(item.get("collected", False) for item in document_items if item["priority"] == "required"),
         bool(data.get("review_complete")) and not application_missing(data),
-        bool(data.get("official_portal_opened")),
     ]
     return round(sum(milestones) / len(milestones) * 100)

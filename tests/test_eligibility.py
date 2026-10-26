@@ -30,6 +30,8 @@ def test_expanded_path_does_not_claim_eligibility():
 def test_elderly_or_disabled_routes_to_net_review():
     result = screen_arizona(1, 5000, True)
     assert result.status == "needs_net_test"
+    assert result.title_key == "result_des_confirm"
+    assert "explain_apply_unsure" in result.explanation_keys
 
 
 def test_unsupported_state_refuses_estimate():

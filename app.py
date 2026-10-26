@@ -14,7 +14,9 @@ from services.resources import official_resources, translator
 
 
 ROOT = Path(__file__).resolve().parent
-st.set_page_config(page_title="SNAPBridge", page_icon="🌉", layout="wide", initial_sidebar_state="collapsed")
+LOGO_PATH = ROOT / "assets" / "snapbridge-mark.svg"
+LOGO_SVG = LOGO_PATH.read_text(encoding="utf-8")
+st.set_page_config(page_title="SNAPBridge", page_icon=str(LOGO_PATH), layout="wide", initial_sidebar_state="collapsed")
 st.markdown(f"<style>{(ROOT / 'styles' / 'custom.css').read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
 
 
@@ -89,7 +91,7 @@ def header_notice(t) -> None:
 
 
 def render_home(t) -> None:
-    st.markdown(f'<div class="state-banner">📍 {t("supported_state")}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="state-banner"><span>{t("availability_label")}</span>{t("supported_state")}</div>', unsafe_allow_html=True)
     st.markdown(
         f'<section class="hero"><div class="eyebrow">{t("tagline")}</div>'
         f'<h1>{t("hero_title")}</h1><p>{t("hero_body")}</p></section>',
@@ -105,12 +107,12 @@ def render_home(t) -> None:
     st.write("")
     cols = st.columns(3)
     cards = [
-        ("🛡️", t("privacy_first"), t("privacy_body")),
-        ("↪️", t("adaptive"), t("adaptive_body")),
-        ("🔎", t("explainable"), t("explainable_body")),
+        ("01", t("privacy_first"), t("privacy_body")),
+        ("02", t("adaptive"), t("adaptive_body")),
+        ("03", t("explainable"), t("explainable_body")),
     ]
-    for col, (icon, title, body) in zip(cols, cards):
-        col.markdown(f'<div class="card"><div class="icon">{icon}</div><h3>{title}</h3><p>{body}</p></div>', unsafe_allow_html=True)
+    for col, (number, title, body) in zip(cols, cards):
+        col.markdown(f'<div class="card"><div class="feature-index">{number}</div><h3>{title}</h3><p>{body}</p></div>', unsafe_allow_html=True)
 
     st.write("")
     st.subheader(t("workflow_title"))
@@ -391,7 +393,7 @@ def render_dashboard(t) -> None:
     if st.session_state.household_complete:
         pdf = build_summary_pdf(dict(st.session_state), docs, t)
         st.download_button(t("download_pdf"), pdf, "SNAPBridge_preparation_worksheet.pdf", "application/pdf", type="primary", use_container_width=True)
-        st.markdown(f'<div class="download-warning">⚠️ {t("pdf_download_warning")}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="download-warning"><strong>{t("privacy_note")}</strong> {t("pdf_download_warning")}</div>', unsafe_allow_html=True)
     st.warning(t("portal_notice"))
     portal = official_resources()["AZ"]["apply_url"]
     st.link_button(t("open_official_portal"), portal, use_container_width=True)
@@ -441,12 +443,20 @@ if pending_page:
 elif "nav_radio" not in st.session_state:
     st.session_state.nav_radio = st.session_state.page
 brand_col, language_col = st.columns([5, 1])
-brand_col.markdown(f'<div class="top-brand"><span class="brand-icon">S</span><strong>SNAPBridge</strong></div>', unsafe_allow_html=True)
 language_label = language_col.selectbox("Language / Idioma", ["English", "Español"], index=0 if st.session_state.language == "en" else 1, label_visibility="collapsed")
 st.session_state.language = "es" if language_label == "Español" else "en"
 t = translator(st.session_state.language)
+brand_col.markdown(
+    f'<div class="top-brand"><span class="brand-icon">{LOGO_SVG}</span>'
+    f'<span class="brand-copy"><strong>SNAPBridge</strong><small>{t("brand_descriptor")}</small></span></div>',
+    unsafe_allow_html=True,
+)
 pages = ["home", "screener", "assistant", "documents", "dashboard", "resources", "about"]
-labels = {key: t(key) for key in pages}
+labels = {
+    "home": t("home"), "screener": t("nav_screener"), "assistant": t("nav_prepare"),
+    "documents": t("nav_documents"), "dashboard": t("dashboard"),
+    "resources": t("nav_resources"), "about": t("nav_about"),
+}
 selected = st.radio("Navigation", pages, format_func=lambda key: labels[key], key="nav_radio", label_visibility="collapsed", horizontal=True)
 st.session_state.page = selected
 
@@ -458,7 +468,7 @@ renderers = {
 renderers[st.session_state.page](t)
 with st.expander(t("privacy_controls")):
     st.write(t("privacy_controls_help"))
-    if st.button(f'🗑️ {t("clear_session_data")}', key="clear_session_data", use_container_width=True):
+    if st.button(t("clear_session_data"), key="clear_session_data", use_container_width=True):
         clear_data()
         st.rerun()
     if st.session_state.get("cleared_notice"):

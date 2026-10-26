@@ -1,0 +1,17 @@
+{
+  "AZ": {
+    "name": "Arizona",
+    "apply_url": "https://www.healthearizonaplus.gov/",
+    "apply_label": "Health-e-Arizona Plus",
+    "des_overview_url": "https://des.az.gov/services/basic-needs/food-assistance/nutrition-assistance-na",
+    "how_to_apply_url": "https://des.az.gov/services/basic-needs/food-assistance/nutrition-assistance-na/how-apply-nutrition-assistance",
+    "policy_url": "https://dbmefaapolicy.azdes.gov/FAA5/NA_Eligibility_and_Benefit_Determination.html",
+    "office_locator_url": "https://des.az.gov/find-your-local-office",
+    "phone": "1-855-432-7587",
+    "interview_phone": "1-855-777-8590"
+  },
+  "USDA": {
+    "snap_url": "https://www.fna.usda.gov/snap",
+    "cola_url": "https://www.fna.usda.gov/snap/allotment/cola"
+  }
+}

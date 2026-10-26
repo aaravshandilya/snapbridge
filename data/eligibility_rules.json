@@ -1,0 +1,28 @@
+{
+  "ruleset": "FY2027",
+  "effective_from": "2026-10-01",
+  "effective_to": "2027-09-30",
+  "verified_on": "2026-10-25",
+  "federal_source_url": "https://www.fna.usda.gov/snap/allotment/cola",
+  "states": {
+    "AZ": {
+      "name": "Arizona",
+      "policy_source_url": "https://dbmefaapolicy.azdes.gov/FAA5/NA_Eligibility_and_Benefit_Determination.html",
+      "standard_source_url": "https://dbmefaapolicy.azdes.gov/FAA6/NA_Gross_Monthly_Income_Eligibility_Standard.html",
+      "expanded_source_url": "https://dbmefaapolicy.azdes.gov/FAA6/NA_200__of_the_Federal_Poverty_Level.html",
+      "gross_130": {
+        "amounts": {"1": 1729, "2": 2345, "3": 2960, "4": 3575, "5": 4191, "6": 4806, "7": 5421, "8": 6037},
+        "additional_member": 616
+      },
+      "expanded_200": {
+        "amounts": {"1": 2660, "2": 3608, "3": 4554, "4": 5500, "5": 6448, "6": 7394, "7": 8340, "8": 9288},
+        "additional_member": 948
+      },
+      "notes": [
+        "Expanded categorical eligibility has additional conditions not determined by this screener.",
+        "For units containing an elderly or disabled participant, Arizona applies the net income test rather than the gross income test.",
+        "Only Arizona DES can determine eligibility and benefit amount."
+      ]
+    }
+  }
+}

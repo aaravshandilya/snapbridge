@@ -1,0 +1,5 @@
+{
+  "screener_sections": ["household", "income", "expenses", "result"],
+  "application_sections": ["household", "income_and_expenses", "review"],
+  "privacy_excluded_fields": ["social_security_number", "bank_credentials", "identity_document_upload"]
+}

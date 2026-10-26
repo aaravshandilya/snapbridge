@@ -439,9 +439,9 @@ init_state()
 pending_page = st.session_state.pop("pending_page", None)
 if pending_page:
     st.session_state.page = pending_page
-    st.session_state.nav_radio = pending_page
-elif "nav_radio" not in st.session_state:
-    st.session_state.nav_radio = st.session_state.page
+    st.session_state.nav_control = pending_page
+elif "nav_control" not in st.session_state:
+    st.session_state.nav_control = st.session_state.page
 brand_col, language_col = st.columns([5, 1])
 language_label = language_col.selectbox("Language / Idioma", ["English", "Español"], index=0 if st.session_state.language == "en" else 1, label_visibility="collapsed")
 st.session_state.language = "es" if language_label == "Español" else "en"
@@ -457,8 +457,11 @@ labels = {
     "documents": t("nav_documents"), "dashboard": t("dashboard"),
     "resources": t("nav_resources"), "about": t("nav_about"),
 }
-selected = st.radio("Navigation", pages, format_func=lambda key: labels[key], key="nav_radio", label_visibility="collapsed", horizontal=True)
-st.session_state.page = selected
+selected = st.segmented_control(
+    "Navigation", pages, format_func=lambda key: labels[key], key="nav_control",
+    label_visibility="collapsed", selection_mode="single", width="stretch",
+)
+st.session_state.page = selected or st.session_state.page
 
 renderers = {
     "home": render_home, "screener": render_screener, "assistant": render_assistant,
